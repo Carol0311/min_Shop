@@ -1,0 +1,5 @@
+cd /d d:
+cd Carol\minShop\
+bower install bootstrap --save
+bower install angular angular-route --save
+doskey/history >> cmd.log

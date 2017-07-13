@@ -1,0 +1,29 @@
+{
+  "name": "minshop",
+  "version": "1.0.0",
+  "description": "this is a website for shopping",
+  "main": "index.js",
+  "scripts": {
+    "test": "gulp test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Carol0311/minShop.git"
+  },
+  "keywords": [
+    "shopping",
+    "node",
+    "express",
+    "bower",
+    "bootstrap"
+  ],
+  "author": "Carol_DDZ",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Carol0311/minShop/issues"
+  },
+  "homepage": "https://github.com/Carol0311/minShop#readme",
+  "dependencies": {
+    "express": "^4.15.3"
+  }
+}
