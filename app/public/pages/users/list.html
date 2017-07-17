@@ -1,0 +1,35 @@
+<div class="col-md-12">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <table class="table table-responsive">
+                <thead>
+                <tr>
+                    <td><input type="checkbox" id="selectAllWares"/></td>
+                    <td>Name</td>
+                    <td>Price</td>
+                    <td>Picture</td>
+                    <td class="text-center">Operation</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="ware in wares">
+                    <td><input type="checkbox" data-id="{{ware._id}}" name="chkItem"/></td>
+                    <td>{{ware.name}}</td>
+                    <td>{{ware.price}}</td>
+                    <td><img style="width:50px;height:50px" ng-src="{{ware.imgSrc}}" alt="{{ware.name}}"/></td>
+                    <td class="text-center">
+                        <button class="btn btn-danger" ng-click="delete()">Delete</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="panel-footer text-center">
+            <ul class="pagination pagination-sm">
+                <li >previous page</li>
+                <li ng-repeat="page in pages">{{page}}</li>
+                <li >next page</li>
+            </ul>
+        </div>
+    </div>
+</div>

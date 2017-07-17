@@ -1,0 +1,49 @@
+<div class="col-md-12">
+    <div class="panel panel-default">
+        <div class="panel-heading">Sign up</div>
+        <form action="/users/reg" novalidate  role="form" method="post" name="userform" class="form-horizontal" ng-submit="save()">
+            <div class="panel-body">
+                <div class="form-group row"  ng-class="{'has-error':userform.email.$dirty && userform.email.$invalid}">
+                    <label for="email" class="control-label col-sm-offset-2 col-sm-2 text-right">Email</label>
+                    <div class="input-group col-sm-4">
+                        <div class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></div>
+                        <input class="form-control" type="email" id="email" name="email" ng-model="user.email" placeholder="please input email address" ng-required />
+                    </div>
+                    <div class="help-block pull-right col-lg-8" ng-show="userform.email.$dirty && userform.email.$invalid">
+                        <span class="text-danger" ng-show="userform.email.$error.required">email address is required option</span>
+                        <span class="text-danger" ng-show="userform.email.$error.email">please input valid email address</span>
+                    </div>
+                </div>
+                <div class="form-group row"  ng-class="{'has-error':userform.password.$dirty && userform.password.$invalid}">
+                    <label for="password" class="control-label col-sm-offset-2 col-sm-2 text-right">password</label>
+                    <div class="input-group col-sm-4">
+                        <div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
+                        <input class="form-control" type="text" id="password" name="password" ng-model="user.password"  placeholder="please input 6--12 password" ng-minlength="6" ng-maxlength="12" ng-required/>
+                    </div>
+                    <div class="help-block pull-right col-lg-8" ng-show="userform.password.$dirty && userform.password.$invalid">
+                        <span class="text-danger" ng-show="userform.password.$error.required">please input password</span>
+                        <span class="text-danger" ng-show="userform.password.$error.minlength">min length is 6</span>
+                        <span class="text-danger" ng-show="userform.password.$error.maxlength">max length is 12</span>
+                    </div>
+                </div>
+                <div class="form-group row"  ng-class="{'has-error':userform.repassword.$dirty && userform.repassword.$invalid}">
+                    <label for="repassword" class="control-label col-sm-offset-2 col-sm-2 text-right">Confirm password</label>
+                    <div class="input-group col-sm-4">
+                        <div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
+                        <input class="form-control" type="text" id="repassword" name="repassword" ng-model="user.repassword" placeholder="please input password again"  ng-minlength="6" ng-maxlength="12" ng-required/>
+                    </div>
+                    <div class="help-block pull-right col-lg-8" ng-show="userform.repassword.$dirty && userform.repassword.$invalid">
+                        <span class="text-danger" ng-show="userform.repassword.$error.required">please input password again</span>
+                        <span class="text-danger" ng-show="userform.repassword.$error.minlength">min length is 6</span>
+                        <span class="text-danger" ng-show="userform.repassword.$error.maxlength">max length is 12</span>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-footer clearfix">
+                <div class="col-sm-offset-5 col-sm-1">
+                    <button type="submit" class="btn btn-lg btn-primary btn-enter" ng-disabled="userform.$invalid || user.password != user.repassword">Sign up</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

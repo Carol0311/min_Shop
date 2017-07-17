@@ -1,0 +1,25 @@
+body{
+    margin-top: 70px;
+}
+.navbar,.navbar a,.panel-body{
+    background-color:black;
+    color:white;
+}
+.pictureList img{
+    width:200px;
+    height:250px;
+}
+.pictureList li{
+    display:inline-block;
+    float:left;
+    margin:60px;
+}
+.pictureList li a,.pictureList li img.littleChart{
+    height: 30px;
+    width: 30px;
+    display: inline-block;
+    cursor: pointer;
+}
+.pictureList li img.littleChart{
+    border-radius:100%;
+}

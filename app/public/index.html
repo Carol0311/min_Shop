@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html ng-app="shopApp" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css"/>
+    <link rel="stylesheet" href="css/shop.css"/>
+</head>
+<body>
+<nav class="navbar navbar-fixed-top" role="navigation" ng-controller="NavBarCtrl">
+    <div class="navbar-header">
+        <a href="#" class="navbar-brand">Picture Shop</a>
+    </div>
+    <ul class="nav navbar-nav navbar-right">
+        <li><a href="#!/users/home">Home page</a></li>
+        <li ng-show="me"><a href="#!/manage/manage">Manage Center</a></li>
+        <li ng-show="me"><a href="#!/users/list">Shopping List</a></li>
+        <li><a href="#!/users/reg">Sign up</a></li>
+        <li ng-show="!alreadyLogin"><a href="#!/users/login">Sign in</a></li>
+        <li ng-show="me"><a href="#" ng-click="logout()">Log out</a>
+        </li>
+    </ul>
+</nav>
+
+<div class="row" style="top: -19px;position: relative;magin:0px;" ng-view></div>
+<!--<nav class="navbar navbar-fixed-bottom" role="navigation">
+    <ul class="nav navbar-nav navbar-left">
+        <li><a href="#!/contactUs">Contact us</a></li>
+    </ul>
+</nav>-->
+</body>
+<script src="/lib/jquery/dist/jquery.js"></script>
+<script src="/lib/bootstrap/dist/js/bootstrap.js"></script>
+<script src="/lib/angular/angular.js"></script>
+<script src="/lib/angular-route/angular-route.js"></script>
+<script>
+    $(function(){
+        $('#myCarousel').carousel({
+            interval: 3000
+        });
+    });
+    var app = angular.module('shopApp',['ngRoute']);
+    app.config(function($routeProvider,$locationProvider){
+        $routeProvider.when('/',{
+            templateUrl:'pages/users/home.html',
+            controller:'HomeCtrl'
+        }).when('/users/home',{
+            templateUrl:'pages/users/home.html',
+            controller:'HomeCtrl'
+        }).when('/users/reg',{
+            templateUrl:'pages/users/reg.html',
+            controller:'RegCtrl'
+        }).when('/users/login',{
+            templateUrl:'pages/users/login.html',
+            controller:'LoginCtrl'
+        }).when('/users/list',{
+            templateUrl:'pages/users/list.html',
+            controller:'ListCtrl'
+        }).when('/manage/manage',{
+            templateUrl:'pages/manage/manage.html',
+            controller:'ManageCtrl'
+        }).otherwise({
+            redirectTo: '/'
+        });
+    });
+    app.run(function($http,$location,$rootScope,$templateCache){
+        $http({
+            url:'/users/validate',
+            method:'POST'
+        }).then(function successCallback(response) {
+            $rootScope.alreadyLogin = true;
+            $rootScope.me = response.data;
+            $location.path('/users/home');
+        }, function errorCallback(response) {
+            $rootScope.alreadyLogin = false;
+            $location.path('/users/login');
+        });
+    });
+</script>
+<script type="text/javascript" src="Controllers/home.js"></script>
+<script type="text/javascript" src="Controllers/navigation.js"></script>
+<script type="text/javascript" src="Controllers/users.js"></script>
+<script type="text/javascript" src="Controllers/manage.js"></script>
+</html>
